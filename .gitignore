@@ -22,8 +22,10 @@ build/
 .ipynb_checkpoints/
 
 # Data — commit only small samples, never full datasets
-data/raw/
-data/interim/
+data/raw/*
+!data/raw/uci350.zip
+data/interim/*
+!data/interim/credit_default.csv.gz
 data/processed/
 *.parquet
 *.duckdb
