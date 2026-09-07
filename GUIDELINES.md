@@ -15,16 +15,17 @@ fitted on a fold the test set never sees.
 ## Stack
 
 Python 3.12 · pandas · scikit-learn · LightGBM · SHAP · matplotlib · argparse CLI.
-No services, no API keys, no env vars. Dataset downloads itself from UCI (5.3 MB).
+No services, no API keys, no env vars. Dataset (5.3 MB) is committed at
+`data/raw/uci350.zip`, not downloaded on every clone/CI run.
 
 ## Acceptance criteria
 
-- [ ] Class imbalance handled and the handling *evaluated*, not assumed (3.5:1 here)
-- [ ] Cost-sensitive threshold, derived from a stated cost model with sensitivity analysis
-- [ ] Calibration measured (Brier, ECE, reliability curve) before and after
-- [ ] SHAP global + local explanations
-- [ ] Drift detection with measured, not only synthetic, distribution shift
-- [ ] Ship gate passes (`/ship`)
+- [x] Class imbalance handled and the handling *evaluated*, not assumed (3.5:1 here)
+- [x] Cost-sensitive threshold, derived from a stated cost model with sensitivity analysis
+- [x] Calibration measured (Brier, ECE, reliability curve) before and after
+- [x] SHAP global + local explanations
+- [x] Drift detection with measured, not only synthetic, distribution shift
+- [ ] Ship gate passes (`/ship`) — deliberately not run this session (built-not-shipped, per user request)
 
 ## Project-specific notes
 

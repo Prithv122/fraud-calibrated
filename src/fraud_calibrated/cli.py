@@ -93,7 +93,10 @@ def cmd_drift(args: argparse.Namespace) -> int:
         print("stratum split produced an empty slice; adjust the AGE cutoff", file=sys.stderr)
         return 1
 
-    psi_table = drift.feature_psi_table(in_domain, out_of_domain, data.NUMERIC_COLS)
+    # AGE itself defines the split, so its own PSI is a trivial artifact of the
+    # stratum choice, not a finding -- exclude it from the reported table.
+    psi_columns = [c for c in data.NUMERIC_COLS if c != "AGE"]
+    psi_table = drift.feature_psi_table(in_domain, out_of_domain, psi_columns)
 
     from fraud_calibrated.model import make_dataset, predict_proba
 
