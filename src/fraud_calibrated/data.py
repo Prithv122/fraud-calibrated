@@ -113,7 +113,11 @@ def load(
     cache_dir = Path(cache_dir)
     cache = cache_dir / "interim" / "credit_default.csv.gz"
     if cache.exists() and not (force_download or force_rebuild):
-        return pd.read_csv(cache)
+        cached = pd.read_csv(cache)
+        # CSV round-tripping loses dtype information; TARGET must stay int8 so a
+        # cache hit and a freshly-cleaned frame are byte-for-byte equivalent.
+        cached[TARGET] = cached[TARGET].astype(np.int8)
+        return cached
     archive = download(cache_dir / "raw", force=force_download)
     df = clean(read_archive(archive))
     cache.parent.mkdir(parents=True, exist_ok=True)
