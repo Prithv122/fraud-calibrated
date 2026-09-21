@@ -25,7 +25,7 @@ No services, no API keys, no env vars. Dataset (5.3 MB) is committed at
 - [x] Calibration measured (Brier, ECE, reliability curve) before and after
 - [x] SHAP global + local explanations
 - [x] Drift detection with measured, not only synthetic, distribution shift
-- [ ] Ship gate passes (`/ship`) — deliberately not run this session (built-not-shipped, per user request)
+- [ ] Ship gate passes — deliberately not run this session (built-not-shipped, per user request)
 
 ## Project-specific notes
 
